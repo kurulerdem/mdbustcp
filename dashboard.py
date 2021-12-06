@@ -10,8 +10,8 @@ ws.title('Iga Socomec')
 ws.geometry('1000x1000')
 ws['bg'] = 'white'
 
-#Style
 
+#Style
 style = ttk.Style()
 style.theme_use("clam")
 style.configure('W.TButton',font=('Verdana', 14 ))
@@ -118,7 +118,7 @@ r1a12 = d12.prepareSmoduleRequest(d12.host,11)
 currents12 = d12.getCurrents(r1a12,18183)
 
 #Device13
-d13 = Device("S15","172.16.39.214")
+d13 = Device("S15","172.16.39.215")
 r13 = d13.prepareUmoduleRequest()
 volts13 = d13.getVolts(r13)
 status13 = d13.checkVoltStatus(volts13)
@@ -222,9 +222,6 @@ def remove_all():
 	for record in socomeclist.get_children():
 		socomeclist.delete(record)
 		
-	
-
-	
 #Device1
 	d1 = Device("S00","172.16.39.200")
 	r1 = d1.prepareUmoduleRequest()
@@ -417,7 +414,7 @@ def remove_all():
 
 
 	#add child
-	socomeclist.insert(parent='',index='end',iid=31,text='',values=('31',d18.name,currents18,volts18[0:5], status18))
+	socomeclist.insert(parent='',index='end',iid=31,text='',values=('--> Smodule1',d18.name,currents18,volts18[0:5], status18))
 	socomeclist.move('31','1','1')
 	socomeclist.pack()
 
