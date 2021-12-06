@@ -7,27 +7,17 @@ import time
 from datetime import datetime
 ws  = Tk()
 ws.title('Iga Socomec')
-ws.geometry('800x800')
+ws.geometry('1000x1000')
 ws['bg'] = 'white'
 
 #Style
 
 style = ttk.Style()
 style.theme_use("clam")
-'''
-style.configure("Treeview",
-	background="#D3D3D3",
-	foreground="black",
-	rowheight=20,
-	fieldbackground="#D3D3D3")
-
-style.map('Treeview',
-	background=[('selected','blue')])
-	'''
+style.configure('W.TButton',font=('Verdana', 14 ))
 soco_frame = Frame(ws)
 soco_frame.pack()
 socomeclist = ttk.Treeview(soco_frame,height=25)
-
 
 
 #Device1
@@ -184,14 +174,14 @@ currents18 = d18.getCurrents(r1a18,18183)
 
 #prepare header
 socomeclist['columns'] = ('device_id', 'device_area','device_amper', 'device_voltage', 'device_status')
-socomeclist.column("#0", width=25, minwidth=25, stretch=YES)
-socomeclist.column("device_id",anchor=W, width=50 , stretch=YES)
-socomeclist.column("device_area",anchor=CENTER,width=150, stretch=YES)
-socomeclist.column("device_amper",anchor=CENTER,width=150, stretch=YES)
-socomeclist.column("device_voltage",anchor=CENTER,width=150, stretch=YES)
-socomeclist.column("device_status",anchor=CENTER,width=150, stretch=YES)
+socomeclist.column("#0" ,width=10)
+socomeclist.column("device_id")
+socomeclist.column("device_area",anchor=CENTER)
+socomeclist.column("device_amper",anchor=CENTER)
+socomeclist.column("device_voltage",anchor=CENTER)
+socomeclist.column("device_status",anchor=CENTER)
 
-socomeclist.heading("#0",text="",anchor=W)
+socomeclist.heading("#0",text="",anchor=CENTER)
 socomeclist.heading("device_id",text="Id",anchor=W)
 socomeclist.heading("device_area",text="Bolge",anchor=CENTER)
 socomeclist.heading("device_amper",text="Akim",anchor=CENTER)
@@ -199,36 +189,34 @@ socomeclist.heading("device_voltage",text="RST",anchor=CENTER)
 socomeclist.heading("device_status",text="Durum",anchor=CENTER)
 
 #insert devices..
-socomeclist.insert(parent='',index='end',iid=1,text='',values=('1',d1.name,currents,volts[0:3], status))
-socomeclist.insert(parent='',index='end',iid=2,text='',values=('2',d2.name,currents2,volts2[0:3], status2))
-socomeclist.insert(parent='',index='end',iid=3,text='',values=('3',d3.name,currents3,volts3[0:3], status3))
-socomeclist.insert(parent='',index='end',iid=4,text='',values=('4',d4.name,currents4,volts4[0:3], status4))
-socomeclist.insert(parent='',index='end',iid=5,text='',values=('5',d5.name,currents5,volts5[0:3], status5))
-socomeclist.insert(parent='',index='end',iid=6,text='',values=('6',d6.name,currents6,volts6[0:3], status6))
-socomeclist.insert(parent='',index='end',iid=7,text='',values=('7',d7.name,currents7,volts7[0:3], status7))
-socomeclist.insert(parent='',index='end',iid=8,text='',values=('8',d8.name,currents8,volts8[0:3], status8))
-socomeclist.insert(parent='',index='end',iid=9,text='',values=('9',d9.name,currents9,volts9[0:3], status9))
-socomeclist.insert(parent='',index='end',iid=10,text='',values=('10',d10.name,currents10,volts10[0:3], status10))
-socomeclist.insert(parent='',index='end',iid=11,text='',values=('11',d11.name,currents11,volts11[0:3], status11))
-socomeclist.insert(parent='',index='end',iid=12,text='',values=('12',d12.name,currents12,volts12[0:3], status12))
-socomeclist.insert(parent='',index='end',iid=13,text='',values=('13',d13.name,currents13,volts13[0:3], status13))
-socomeclist.insert(parent='',index='end',iid=14,text='',values=('14',d14.name,currents14,volts14[0:3], status14))
-socomeclist.insert(parent='',index='end',iid=15,text='',values=('15',d15.name,currents15,volts15[0:3], status15))
-socomeclist.insert(parent='',index='end',iid=16,text='',values=('16',d16.name,currents16,volts16[0:3], status16))
-#socomeclist.insert(parent='',index='end',iid=17,text='',values=('17',d17.name,currents17,volts17[0:3], status17))
-socomeclist.insert(parent='',index='end',iid=18,text='',values=('18',d18.name,currents18,volts18[0:3], status18))
-#socomeclist.insert(parent='',index='end',iid=19,text='',values=('19',d19.name,currents19,volts19[0:3], status19))
+socomeclist.insert(parent='',index='end',iid=1,text='',values=('1',d1.name,currents,volts[0:5], status))
+socomeclist.insert(parent='',index='end',iid=2,text='',values=('2',d2.name,currents2,volts2[0:5], status2))
+socomeclist.insert(parent='',index='end',iid=3,text='',values=('3',d3.name,currents3,volts3[0:5], status3))
+socomeclist.insert(parent='',index='end',iid=4,text='',values=('4',d4.name,currents4,volts4[0:5], status4))
+socomeclist.insert(parent='',index='end',iid=5,text='',values=('5',d5.name,currents5,volts5[0:5], status5))
+socomeclist.insert(parent='',index='end',iid=6,text='',values=('6',d6.name,currents6,volts6[0:5], status6))
+socomeclist.insert(parent='',index='end',iid=7,text='',values=('7',d7.name,currents7,volts7[0:5], status7))
+socomeclist.insert(parent='',index='end',iid=8,text='',values=('8',d8.name,currents8,volts8[0:5], status8))
+socomeclist.insert(parent='',index='end',iid=9,text='',values=('9',d9.name,currents9,volts9[0:5], status9))
+socomeclist.insert(parent='',index='end',iid=10,text='',values=('10',d10.name,currents10,volts10[0:5], status10))
+socomeclist.insert(parent='',index='end',iid=11,text='',values=('11',d11.name,currents11,volts11[0:5], status11))
+socomeclist.insert(parent='',index='end',iid=12,text='',values=('12',d12.name,currents12,volts12[0:5], status12))
+socomeclist.insert(parent='',index='end',iid=13,text='',values=('13',d13.name,currents13,volts13[0:5], status13))
+socomeclist.insert(parent='',index='end',iid=14,text='',values=('14',d14.name,currents14,volts14[0:5], status14))
+socomeclist.insert(parent='',index='end',iid=15,text='',values=('15',d15.name,currents15,volts15[0:5], status15))
+socomeclist.insert(parent='',index='end',iid=16,text='',values=('16',d16.name,currents16,volts16[0:5], status16))
+#socomeclist.insert(parent='',index='end',iid=17,text='',values=('17',d17.name,currents17,volts17[0:5], status17))
+socomeclist.insert(parent='',index='end',iid=18,text='',values=('18',d18.name,currents18,volts18[0:5], status18))
+#socomeclist.insert(parent='',index='end',iid=19,text='',values=('19',d19.name,currents19,volts19[0:5], status19))
 
 
 
 #add child
-socomeclist.insert(parent='',index='end',iid=31,text='',values=('31',d18.name,currents18,volts18[0:3], status18))
+socomeclist.insert(parent='',index='end',iid=31,text='',values=('--> Smodule1',d18.name,currents18,volts18[0:5], status18))
 socomeclist.move('31','1','1')
 
 socomeclist.pack()
 
-exit_button = Button(ws,text="Kapat", command=ws.destroy)
-exit_button.pack()
 
 def remove_all():
 	for record in socomeclist.get_children():
@@ -391,14 +379,14 @@ def remove_all():
 
 	#prepare header
 	socomeclist['columns'] = ('device_id', 'device_area','device_amper', 'device_voltage', 'device_status')
-	socomeclist.column("#0", width=25, minwidth=25, stretch=YES)
-	socomeclist.column("device_id",anchor=W, width=50 , stretch=YES)
-	socomeclist.column("device_area",anchor=CENTER,width=150, stretch=YES)
-	socomeclist.column("device_amper",anchor=CENTER,width=150, stretch=YES)
-	socomeclist.column("device_voltage",anchor=CENTER,width=150, stretch=YES)
-	socomeclist.column("device_status",anchor=CENTER,width=150, stretch=NO)
+	socomeclist.column("#0" ,width=10)
+	socomeclist.column("device_id")
+	socomeclist.column("device_area",anchor=CENTER)
+	socomeclist.column("device_amper",anchor=CENTER)
+	socomeclist.column("device_voltage",anchor=CENTER)
+	socomeclist.column("device_status",anchor=CENTER)
 
-	socomeclist.heading("#0",text="",anchor=W)
+	socomeclist.heading("#0",text="",anchor=CENTER)
 	socomeclist.heading("device_id",text="Id",anchor=W)
 	socomeclist.heading("device_area",text="Bolge",anchor=CENTER)
 	socomeclist.heading("device_amper",text="Akim",anchor=CENTER)
@@ -406,42 +394,42 @@ def remove_all():
 	socomeclist.heading("device_status",text="Durum",anchor=CENTER)
 
 	#insert devices..
-	socomeclist.insert(parent='',index='end',iid=1,text='',values=('1',d1.name,currents,volts[0:3], status))
-	socomeclist.insert(parent='',index='end',iid=2,text='',values=('2',d2.name,currents2,volts2[0:3], status2))
-	socomeclist.insert(parent='',index='end',iid=3,text='',values=('3',d3.name,currents3,volts3[0:3], status3))
-	socomeclist.insert(parent='',index='end',iid=4,text='',values=('4',d4.name,currents4,volts4[0:3], status4))
-	socomeclist.insert(parent='',index='end',iid=5,text='',values=('5',d5.name,currents5,volts5[0:3], status5))
-	socomeclist.insert(parent='',index='end',iid=6,text='',values=('6',d6.name,currents6,volts6[0:3], status6))
-	socomeclist.insert(parent='',index='end',iid=7,text='',values=('7',d7.name,currents7,volts7[0:3], status7))
-	socomeclist.insert(parent='',index='end',iid=8,text='',values=('8',d8.name,currents8,volts8[0:3], status8))
-	socomeclist.insert(parent='',index='end',iid=9,text='',values=('9',d9.name,currents9,volts9[0:3], status9))
-	socomeclist.insert(parent='',index='end',iid=10,text='',values=('10',d10.name,currents10,volts10[0:3], status10))
-	socomeclist.insert(parent='',index='end',iid=11,text='',values=('11',d11.name,currents11,volts11[0:3], status11))
-	socomeclist.insert(parent='',index='end',iid=12,text='',values=('12',d12.name,currents12,volts12[0:3], status12))
-	socomeclist.insert(parent='',index='end',iid=13,text='',values=('13',d13.name,currents13,volts13[0:3], status13))
-	socomeclist.insert(parent='',index='end',iid=14,text='',values=('14',d14.name,currents14,volts14[0:3], status14))
-	socomeclist.insert(parent='',index='end',iid=15,text='',values=('15',d15.name,currents15,volts15[0:3], status15))
-	socomeclist.insert(parent='',index='end',iid=16,text='',values=('16',d16.name,currents16,volts16[0:3], status16))
-	#socomeclist.insert(parent='',index='end',iid=17,text='',values=('17',d17.name,currents17,volts17[0:3], status17))
-	socomeclist.insert(parent='',index='end',iid=18,text='',values=('18',d18.name,currents18,volts18[0:3], status18))
-	#socomeclist.insert(parent='',index='end',iid=19,text='',values=('19',d19.name,currents19,volts19[0:3], status19))
+	socomeclist.insert(parent='',index='end',iid=1,text='',values=('1',d1.name,currents,volts[0:5], status))
+	socomeclist.insert(parent='',index='end',iid=2,text='',values=('2',d2.name,currents2,volts2[0:5], status2))
+	socomeclist.insert(parent='',index='end',iid=3,text='',values=('3',d3.name,currents3,volts3[0:5], status3))
+	socomeclist.insert(parent='',index='end',iid=4,text='',values=('4',d4.name,currents4,volts4[0:5], status4))
+	socomeclist.insert(parent='',index='end',iid=5,text='',values=('5',d5.name,currents5,volts5[0:5], status5))
+	socomeclist.insert(parent='',index='end',iid=6,text='',values=('6',d6.name,currents6,volts6[0:5], status6))
+	socomeclist.insert(parent='',index='end',iid=7,text='',values=('7',d7.name,currents7,volts7[0:5], status7))
+	socomeclist.insert(parent='',index='end',iid=8,text='',values=('8',d8.name,currents8,volts8[0:5], status8))
+	socomeclist.insert(parent='',index='end',iid=9,text='',values=('9',d9.name,currents9,volts9[0:5], status9))
+	socomeclist.insert(parent='',index='end',iid=10,text='',values=('10',d10.name,currents10,volts10[0:5], status10))
+	socomeclist.insert(parent='',index='end',iid=11,text='',values=('11',d11.name,currents11,volts11[0:5], status11))
+	socomeclist.insert(parent='',index='end',iid=12,text='',values=('12',d12.name,currents12,volts12[0:5], status12))
+	socomeclist.insert(parent='',index='end',iid=13,text='',values=('13',d13.name,currents13,volts13[0:5], status13))
+	socomeclist.insert(parent='',index='end',iid=14,text='',values=('14',d14.name,currents14,volts14[0:5], status14))
+	socomeclist.insert(parent='',index='end',iid=15,text='',values=('15',d15.name,currents15,volts15[0:5], status15))
+	socomeclist.insert(parent='',index='end',iid=16,text='',values=('16',d16.name,currents16,volts16[0:5], status16))
+	#socomeclist.insert(parent='',index='end',iid=17,text='',values=('17',d17.name,currents17,volts17[0:5], status17))
+	socomeclist.insert(parent='',index='end',iid=18,text='',values=('18',d18.name,currents18,volts18[0:5], status18))
+	#socomeclist.insert(parent='',index='end',iid=19,text='',values=('19',d19.name,currents19,volts19[0:5], status19))
 
 
 
 	#add child
-	socomeclist.insert(parent='',index='end',iid=31,text='',values=('31',d18.name,currents18,volts18[0:3], status18))
+	socomeclist.insert(parent='',index='end',iid=31,text='',values=('31',d18.name,currents18,volts18[0:5], status18))
 	socomeclist.move('31','1','1')
 	socomeclist.pack()
 
 def update_ui():
 	return
 
-
-update_button = Button(ws,text="Guncelle", command=remove_all)
+exit = ttk.Button(ws, text='KAPAT', style='W.TButton', command=ws.destroy).pack(pady=10)
+update_button = ttk.Button(ws,text="Guncelle", style='W.TButton', command=remove_all)
 update_button.pack()
 
 
-
+ws.resizable(False,False)
 ws.mainloop()
 
 

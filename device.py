@@ -14,14 +14,14 @@ class Device:
 		R = response[1] * 0.01
 		S = response[3] * 0.01
 		T = response[5] * 0.01
-		volts= [R,S,T];
+		volts= [R,"/",S,"/",T];
 		return volts;
 	def checkVoltStatus(self,volts):
-		avg= round((volts[0] + volts[1] + volts[2])/ 3)
-		if(volts[0]<=220 or volts[1]<=220 or volts[2]<=220):
+		avg= round((volts[0] + volts[2] + volts[4])/ 3)
+		if(volts[0]<=220 or volts[2]<=220 or volts[4]<=220):
 			result = "Voltaj 220 altinda !";
 			return result
-		elif(volts[0]>=240 or volts[1]>=240 or volts[2]>=240):
+		elif(volts[0]>=240 or volts[2]>=240 or volts[4]>=240):
 			result= "Voltaj 220 ustunde !"
 			return result
 		else:
