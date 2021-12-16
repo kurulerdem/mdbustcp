@@ -7,7 +7,7 @@ class Device:
 	#Prepare request
 	def prepareUmoduleRequest(self):
 		o = ModbusClient(host=self.host, port=502, unit_id=2, auto_open=True);
-		return o;
+		return o
 	#Fetching data
 	def getVolts(self,c):
 		response = c.read_holding_registers(36869,6);
@@ -30,8 +30,16 @@ class Device:
 	
 	def prepareSmoduleRequest(self,host,uid):
 		o = ModbusClient(host=self.host,port=502,unit_id=uid,auto_open=True);
-		return o;
+		return o
 
 	def getCurrents(self,c,register):
 		response = c.read_holding_registers(register,2);
 		return response;
+	def SModuleCurrents(self,c,linyeler):
+		i=0
+		linye_akim = []
+		while(i<len(linyeler)):
+			response = c.read_holding_registers(linyeler[i],1);
+			linye_akim.append(response)
+			i+=1
+		return linye_akim
